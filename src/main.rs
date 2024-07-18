@@ -18,10 +18,17 @@ struct Example {
 }
 
 #[derive(Serialize, Deserialize, Clone)]
-struct Word {
-    head: String,
+struct Classification {
     #[serde(rename = "type")]
     typ: String,
+    subtype: Option<String>,
+    tags: Option<Vec<String>>,
+}
+
+#[derive(Serialize, Deserialize, Clone)]
+struct Word {
+    head: String,
+    classification: Classification,
     definition: String,
     examples: Option<Vec<Example>>,
 }
